@@ -86,6 +86,8 @@
     	var headY = 0;
     	var tailX = canvas.width;
     	var tailY = canvas.height;
+    	var pawX = 0;
+    	var pawY = 0;
     	//var array = [];
 
 	    //console.log(data.length);
@@ -111,6 +113,11 @@
 	      			tailX = x;
 	      			//console.log(x + " "+ y);
 	      		}
+	      		if(pawY <= y){
+	      			pawY = y;
+	      			pawX = x;
+	      			//console.log(x + " "+ y);
+	      		}
 	      	}
 	      	
 	      //draw paws`
@@ -123,7 +130,8 @@
 	    console.log("Head Y " +headY);
 	    drawHead(headX,headY);
 	    drawTail(tailX,tailY);
-	    drawPaws(headX,headX,tailX,tailY);
+	    //drawPaws(headX,headX,tailX,tailY);
+	    paw(pawX,pawY)
 	    //ctx.putImageData(myImageData, 0, 0);
 	    //console.log(data);
     }
@@ -177,11 +185,83 @@
 		console.log("Head");
     }
 
-    function drawPaws(x,y){
+
+    function paw(x,y){
+    	
+
+    	ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x-60,y+60);
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.arc(x-60,y+60,10,0,2*Math.PI);
+		ctx.closePath();
+		ctx.fill();		
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x+60,y+60);
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.arc(x+60,y+60,10,0,2*Math.PI);
+		ctx.closePath();
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x+20,y+60);
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.arc(x+20,y+60,10,0,2*Math.PI);
+		ctx.closePath();
+		ctx.fill();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.lineTo(x-20,y+60);
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.arc(x-20,y+60,10,0,2*Math.PI);
+		ctx.closePath();
+		ctx.fill();
+
+
 
     }
 
-    function drawTail(hx, hy ,tx, ty){
+    function drawPaws(hx, hy ,tx, ty){
+    	/*midX = Math.abs(hx-Math.abs(hx-tx)/2);
+    	midY = Math.abs(hy-Math.abs(hy-ty)/2);
+
+    	drawPaw(midX,midY)
+*/
+		
+	
+
+    }
+/*
+    function drawPaw(x,y){
+    	ctx.beginPath();
+		ctx.arc(x,y,15,0,2*Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+
+
+    }*/
+
+    function drawTail(x,y){
     	ctx.beginPath();
 		ctx.arc(x-25,y,25,6,2);
 		ctx.closePath();
